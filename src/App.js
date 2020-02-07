@@ -7,7 +7,7 @@ function App() {
   const dispatch = useDispatch()
 
   const handleClick = useCallback(() => {
-    dispatch({ type: 'AUPA', payload: 'something' })
+    dispatch({ type: 'COMPONENT_ACTION', payload: 'something' })
   }, [dispatch])
 
   return (

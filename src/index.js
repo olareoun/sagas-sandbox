@@ -23,7 +23,6 @@ const enhancer = composeEnhancers(
 
 const store = createStore(
   (state = {}, action) => {
-    console.log('store', action)
     if (action.type === 'COMPONENT_ACTION') {
       return { ...state, componentAction_executed: true }
     }
@@ -51,10 +50,9 @@ function getUsers() {
 
 // SAGAS STUFF
 
-function* componentActionSaga() {
-  console.log('and I am componentAction saga')
+function* componentActionSaga(action) {
+  console.log('and I am componentAction saga', action)
   const response = yield(call(getUsers))
-  console.log('si o que', response)
   yield(put({ type: 'STORE_RESPONSE', payload: response.result }))
 }
 
