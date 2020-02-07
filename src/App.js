@@ -1,8 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
+import logo from './logo.svg'
+import './App.css'
 
 function App() {
+  const dispatch = useDispatch()
+
+  const handleClick = useCallback(() => {
+    dispatch({ type: 'AUPA', payload: 'something' })
+  }, [dispatch])
+
   return (
     <div className="App">
       <header className="App-header">
@@ -10,17 +17,12 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button onClick={handleClick}>
+          Click me
+        </button>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
